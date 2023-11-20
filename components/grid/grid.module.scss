@@ -30,3 +30,21 @@
     columns: 1;
   }
 }
+
+.wrapper {
+  height         : calc(100vh - 140px);
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.error {
+  display        : flex;
+  flex-direction : column;
+  color          : var(--light-navy);
+  font-size      : 18px;
+  justify-content: center;
+  justify-content: center;
+  margin         : 50px 20px 0;
+  text-align     : center;
+}

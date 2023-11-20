@@ -2,20 +2,19 @@
 import { Button } from "@/ui/button";
 import { useGrid } from "./useGrid";
 import styles from "./grid.module.scss";
+import { Loader } from "@/ui/loader";
 
 export const Grid = () => {
-  const { error, images, handleButtonClick } = useGrid();
+  const { error, images, isInitLoading, handleButtonClick } = useGrid();
+
   return (
     <>
-      <Button
-        position="center"
-        title={"Load more"}
-        action={handleButtonClick}
-      />
-      <div className={styles.container}>
-        {error ? (
-          <ErrorMessage />
-        ) : (
+      {isInitLoading && !error ? (
+        <div className={styles.wrapper}>
+          <Loader />
+        </div>
+      ) : (
+        <div className={styles.container}>
           <>
             {images?.map((image: any, idx: number) => {
               return (
@@ -25,15 +24,27 @@ export const Grid = () => {
               );
             })}
           </>
-        )}
-      </div>
+        </div>
+      )}
+      {error && (
+        <div className={styles.wrapper}>
+          <ErrorMessage />
+        </div>
+      )}
+      {!error && (
+        <Button
+          position="center"
+          title={"Load more"}
+          action={handleButtonClick}
+        />
+      )}
     </>
   );
 };
 
 const ErrorMessage = () => (
-  <div className={"error"}>
-    <div className="error-title">Unsplash API Error</div>
+  <div className={styles.error}>
+    <h3>Unsplash API Error</h3>
     Looks like there is an error fetching images from the Unsplash API. This is
     likely due to exceeding their free API limit. <br />
     Please come back in 60 minutes.
