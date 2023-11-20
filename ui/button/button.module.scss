@@ -1,0 +1,24 @@
+.button {
+  width        : max-content;
+  padding      : 11px 25px;
+  display      : flex;
+  gap          : 10px;
+  align-items  : center;
+  position     : fixed;
+  z-index      : 2;
+  bottom       : 30px;
+  min-height   : 42px;
+  border-radius: 60px;
+  background   : rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  transform    : translateX(-50%);
+
+  &.center {
+    left: 50%;
+  }
+
+  &.right {
+    right: 0;
+  }
+
+}

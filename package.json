@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
+    "classnames": "^2.3.2",
     "next": "14.0.3",
     "node": "^18.14.0",
     "node-sass": "^9.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^4.12.0",
     "sass": "^1.69.5",
     "unsplash-js": "^7.0.18"
   },
