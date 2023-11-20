@@ -8,10 +8,12 @@
   z-index      : 2;
   bottom       : 30px;
   min-height   : 42px;
-  border-radius: 60px;
+  border-radius: 50px;
   background   : rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   transform    : translateX(-50%);
+  color        : var(--light-navy);
+  cursor       : pointer;
 
   &.center {
     left: 50%;

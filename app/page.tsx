@@ -1,23 +1,23 @@
 "use client";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import { ImagesGrid } from "@/components/ImagesGrid";
+import { Grid } from "@/components/grid";
 import { Button } from "@/ui/button";
+import { Header } from "@/components/header";
 
 export default function Home() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div style={{ position: "relative" }}>
-      <ImagesGrid />
+    <div className="app">
+      <Header />
+      <Grid />
       <Button
         position="right"
         icon={<AiOutlineArrowUp />}
-        action={scrollToTop}
+        action={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
       />
     </div>
   );

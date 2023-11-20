@@ -1,10 +1,10 @@
 .container {
-  max-width    : 1200px;
+  max-width    : var(--max-width);
   width        : 100%;
-  margin       : 50px auto 0;
+  margin       : 15px auto 0;
   columns      : 5;
   column-gap   : 10px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 
   .image {
     width        : 100%;
@@ -16,7 +16,7 @@
       width        : 100%;
       height       : auto;
       object-fit   : cover;
-      border-radius: 15px;
+      border-radius: var(--border-radius);
     }
   }
   @media (max-width: 1200px) {

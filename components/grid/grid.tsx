@@ -1,34 +1,17 @@
 "use client";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import styles from "./imagesGrid.module.scss";
 import { Button } from "@/ui/button";
+import { useGrid } from "./useGrid";
+import styles from "./grid.module.scss";
 
-export const ImagesGrid = () => {
-  const [images, setImages] = useState<any>([]);
-  const [error, setError] = useState(null);
-  const unsplashApiKey = process.env.NEXT_PUBLIC_ACCESS_KEY;
-  const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&client_id=${unsplashApiKey}`;
-
-  const fetchData = async () => {
-    axios
-      .get(unsplashEndpoint)
-      .then((res) => {
-        setImages([...images, ...(res.data ?? [])]);
-      })
-      .catch((err) => {
-        setError(err);
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+export const Grid = () => {
+  const { error, images, handleButtonClick } = useGrid();
   return (
     <>
-      <Button position="center" title={"Load more"} action={fetchData} />
+      <Button
+        position="center"
+        title={"Load more"}
+        action={handleButtonClick}
+      />
       <div className={styles.container}>
         {error ? (
           <ErrorMessage />
