@@ -8,25 +8,23 @@ export const useGrid = () => {
   const unsplashApiKey = process.env.NEXT_PUBLIC_ACCESS_KEY;
   const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=30&client_id=${unsplashApiKey}`;
 
-  const fetchImages = async () => {
-    axios
-      .get(unsplashEndpoint)
-      .then((res) => {
-        setImages([...images, ...(res.data ?? [])]);
-        setIsInitLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        console.log(err);
-      });
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(unsplashEndpoint);
+      setImages([...images, ...(response.data ?? [])]);
+      setIsInitLoading(false);
+    } catch (error: any) {
+      setError(error);
+      console.log(`Error: ${error}`);
+    }
   };
 
   const handleButtonClick = () => {
-    fetchImages();
+    fetchData();
   };
 
   useEffect(() => {
-    fetchImages();
+    fetchData();
   }, []);
 
   return { error, images, isInitLoading, handleButtonClick };
